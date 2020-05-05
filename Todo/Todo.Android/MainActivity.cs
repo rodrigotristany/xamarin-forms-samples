@@ -4,18 +4,18 @@ using Android.Content.PM;
 
 namespace Todo
 {
-	[Activity(Label = "Todo", Icon = "@drawable/icon", MainLauncher = true,
-		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity :
-	global::Xamarin.Forms.Platform.Android.FormsApplicationActivity // superclass new in 1.3
-	{
-		protected override void OnCreate(Bundle bundle)
-		{
-			base.OnCreate(bundle);
+    [Activity(Label = "Todo", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity :  global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    {
+        protected override void OnCreate(Bundle bundle)
+        {
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
 
-			global::Xamarin.Forms.Forms.Init(this, bundle);
-
-			LoadApplication(new App());
-		}
-	}
+            base.OnCreate(bundle);
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            LoadApplication(new App());
+        }
+    }
 }

@@ -1,49 +1,45 @@
-﻿using System;
+﻿using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace WorkingWithWebview
 {
-	public class WebAppPage : ContentPage
-	{
-		public WebAppPage ()
-		{
-			var l = new Label {
-				Text = "These buttons leave the current app and open the built-in web browser app for the platform"
-			};
+    public class WebAppPage : ContentPage
+    {
+        public WebAppPage()
+        {
+            var l = new Label
+            {
+                Text = "These buttons leave the current app and open the built-in web browser app for the platform"
+            };
 
-			var openUrl = new Button {
-				Text = "Open location using built-in Web Browser app"
-			};
-			openUrl.Clicked += (sender, e) => {
-				if (Device.OS != TargetPlatform.WinPhone){
-					Device.OpenUri(new Uri("http://xamarin.com/evolve"));
-				} else {
-					DisplayAlert("To Do","Not implemented yet","OK");
-				}
-			};
+            var openUrl = new Button
+            {
+                Text = "Open location using built-in Web Browser app"
+            };
+            openUrl.Clicked += async (sender, e) =>
+            {
+                await Launcher.OpenAsync("http://xamarin.com/evolve");
+            };
 
-			var makeCall = new Button {
-				Text = "Make call using built-in Phone app"
-			};
-			makeCall.Clicked += (sender, e) => {
+            var makeCall = new Button
+            {
+                Text = "Make call using built-in Phone app"
+            };
+            makeCall.Clicked += async (sender, e) =>
+            {
+                await Launcher.OpenAsync("tel:1855XAMARIN");
+            };
 
-				if (Device.OS != TargetPlatform.WinPhone){
-					Device.OpenUri(new Uri("tel:1855XAMARIN"));
-				} else {
-					DisplayAlert("To Do","Not implemented yet","OK");
-				}
-			};
-
-			Content = new StackLayout{
-				Padding = new Thickness (5, 20, 5, 0),
-				HorizontalOptions = LayoutOptions.Fill,
-				Children = {
-					l,
-					openUrl,
-					makeCall
-				}
-			};
-		}
-	}
+            Content = new StackLayout
+            {
+                Padding = new Thickness(5, 20, 5, 0),
+                HorizontalOptions = LayoutOptions.Fill,
+                Children = {
+                    l,
+                    openUrl,
+                    makeCall
+                }
+            };
+        }
+    }
 }
-

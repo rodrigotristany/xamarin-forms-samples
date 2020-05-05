@@ -1,20 +1,17 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace WorkingWithFonts
 {
-	public class App : Application // superclass new in 1.3
-	{
-		public App ()
-		{
-			var tabs = new TabbedPage ();
+    public class App : Application
+    {
+        public App()
+        {
+            TabbedPage tabbedPage = new TabbedPage();
 
-			tabs.Children.Add (new FontPageCs {Title = "C#", Icon = "csharp.png" });
+            tabbedPage.Children.Add(new FontPageXaml { Title = "Xaml", IconImageSource = "xaml.png" });
+            tabbedPage.Children.Add(new FontPageCs { Title = "C#", IconImageSource = "csharp.png" });
 
-			tabs.Children.Add (new FontPageXaml {Title = "Xaml", Icon = "xaml.png" });
-
-			MainPage = tabs;
-		}
-	}
+            MainPage = tabbedPage;
+        }
+    }
 }
-

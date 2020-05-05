@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -6,36 +7,48 @@ using Xamarin.Forms;
 
 namespace ImageWrapLayout
 {
-	public partial class ImageWrapLayoutPage : ContentPage
-	{
-		public ImageWrapLayoutPage()
-		{
-			InitializeComponent();
-		}
+    public partial class ImageWrapLayoutPage : ContentPage
+    {
+        HttpClient _client;
 
-		protected override async void OnAppearing()
-		{
-			base.OnAppearing();
+        public ImageWrapLayoutPage()
+        {
+            InitializeComponent();
+            _client = new HttpClient();
+        }
 
-			var images = await GetImageListAsync();
-			foreach (var photo in images.Photos)
-			{
-				var image = new Image
-				{
-					Source = ImageSource.FromUri(new Uri(photo + string.Format("?width={0}&height={0}&mode=max", Device.OnPlatform(240, 240, 120))))
-				};
-				wrapLayout.Children.Add(image);
-			}
-		}
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
 
-		async Task<ImageList> GetImageListAsync()
-		{
-			var requestUri = "https://docs.xamarin.com/demo/stock.json";
-			using (var client = new HttpClient())
-			{
-				var result = await client.GetStringAsync(requestUri);
-				return JsonConvert.DeserializeObject<ImageList>(result);
-			}
-		}
-	}
+            var images = await GetImageListAsync();
+            if (images != null)
+            {
+                foreach (var photo in images.Photos)
+                {
+                    var image = new Image
+                    {
+                        Source = ImageSource.FromUri(new Uri(photo))
+                    };
+                    wrapLayout.Children.Add(image);
+                }
+            }
+        }
+
+        async Task<ImageList> GetImageListAsync()
+        {
+            try
+            {
+                string requestUri = "https://raw.githubusercontent.com/xamarin/docs-archive/master/Images/stock/small/stock.json";
+                string result = await _client.GetStringAsync(requestUri);
+                return JsonConvert.DeserializeObject<ImageList>(result);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"\tERROR: {ex.Message}");
+            }
+
+            return null;
+        }
+    }
 }

@@ -1,23 +1,20 @@
-﻿using System;
-
+﻿using builtInCellsListView.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+[assembly:XamlCompilation(XamlCompilationOptions.Compile)]
 namespace builtInCellsListView
 {
 	public class App : Application
 	{
 		public App ()
 		{
-			// The root page of your application
-			MainPage = new NavigationPage ();
-			MainPage.Navigation.PushAsync (new ListViewXaml ());
-			MainPage.Navigation.PushAsync (new ListViewCode ());
+			MainPage = new NavigationPage (new MainPage());
 		}
 
 		protected override void OnStart()
 		{
-
-
+			// Handle when your app starts         
 		}
 
 

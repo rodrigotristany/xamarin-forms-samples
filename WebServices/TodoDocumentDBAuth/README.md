@@ -1,11 +1,20 @@
-Todo DocumentDB Auth
-====================
+---
+name: Xamarin.Forms - Todo Azure Cosmos DB Auth
+description: This sample demonstrates how to combine access control with partitioned collections, so that a user can only access their own Azure Cosmos DB...
+page_type: sample
+languages:
+- csharp
+products:
+- xamarin
+- azure-cosmos-db
+- azure-app-service
+urlFragment: webservices-tododocumentdbauth
+---
+# Todo Azure Cosmos DB Auth
 
-This sample demonstrates how to combine access control with partitioned collections, so that a user can only access their own DocumentDB documents in a Xamarin.Forms application.
+This sample demonstrates how to combine access control with partitioned collections, so that a user can only access their own Azure Cosmos DB documents in a Xamarin.Forms application.
 
-For more information about this sample see [Authenticating Users with DocumentDB](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/documentdb/authentication/).
+For more information about this sample see [Authenticating Users with Azure Cosmos DB](https://docs.microsoft.com/xamarin/xamarin-forms/data-cloud/cosmosdb/authentication).
 
-Author
-------
+![Todo Azure Cosmos DB Auth application screenshot](Screenshots/01All.png "Todo Azure Cosmos DB Auth application screenshot")
 
-David Britch
