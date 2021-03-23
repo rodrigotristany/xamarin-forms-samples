@@ -105,7 +105,7 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -117,7 +117,6 @@
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Icon.png" />
-    <BundleResource Include="Resources\TodoSQLite.db3" />
     <BundleResource Include="Resources\check%402x.png" />
     <BundleResource Include="Resources\check.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
